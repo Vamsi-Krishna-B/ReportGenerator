@@ -1,16 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- MathJax configuration -->
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\\\(', '\\\\)'],],   // standard inline math
+    displayMath: [['$$','$$'], ['\\\\[','\\\\]'],], // standard display math
+    processEscapes: true                        // allows \$ in text
+  },
+  options: {
+    skipHtmlTags: ['script','noscript','style','textarea','pre','code']
+  }
+};
+</script>
+
+<!-- Load MathJax library -->
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 <h3 class="mb-4 text-primary">Generated Report</h3>
 
 {% if result %}
   <div class="card shadow-sm border-0">
     <div class="card-body">
+      <!-- Render LLM output as HTML with LaTeX -->
       {{ result | safe }}
     </div>
   </div>
 {% else %}
   <p>No report available.</p>
 {% endif %}
+
+<div class="text-center mt-4">
+  <a href="/" class="btn btn-outline-primary btn-lg">Generate Another Report</a>
+</div>
 
 {% endblock %}

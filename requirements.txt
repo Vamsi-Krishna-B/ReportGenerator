@@ -23,4 +23,5 @@ uvicorn
 fastapi
 jinja2
 python-multipart
-markdown
+markdown2
+latex2mathml

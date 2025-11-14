@@ -1,6 +1,5 @@
-from urllib import request
 import uvicorn
-import markdown
+import markdown2
 import warnings
 from fastapi.templating import Jinja2Templates
 from fastapi import FastAPI, Request,Form
@@ -67,7 +66,6 @@ async def input_generate(
         "results": results
     }
 
-    # Call your report generation function
 
     global final_report_generated 
     result = report_app.generate_report(isUserInput=True, user_input=user_input)
@@ -82,14 +80,11 @@ async def auto_generate(topic: str = Form(...)):
     final_report_generated = result
     return RedirectResponse(url="/result", status_code=303)
 
-# ---------- GET ROUTES ----------
-
-
 @app.get("/result")
 def display_result(request: Request):
+    global final_report_generated
     # print(final_report_generated)
-    result_html = markdown.markdown(final_report_generated) if final_report_generated else None
-    # print(result_html)
+    result_html = markdown2.markdown(final_report_generated,extras=["tables","fenced-code-blocks","latex"]) if final_report_generated else None
     return templates.TemplateResponse(
         "result.html",
         {
@@ -98,7 +93,7 @@ def display_result(request: Request):
         }
     )
 
-# ---------- REDIRECT LOGIC ----------
+
 
 @app.post("/generate_report")
 async def generate_report(user_input: str = Form(...)):
