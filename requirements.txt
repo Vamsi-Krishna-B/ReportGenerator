@@ -1,7 +1,9 @@
 langchain
 langchain_core
 langchain_groq
+langchain_ollama
 langgraph
+langchain_community
 arxiv
 wikipedia
 bs4
@@ -11,3 +13,13 @@ fastapi
 uvicorn
 watchdog
 langgraph-cli[inmem]
+chromadb
+faiss-cpu
+pandas
+numpy
+reportlab
+flask
+uvicorn 
+fastapi
+jinja2
+python-multipart

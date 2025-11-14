@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Enter your details for report generation</h3>
+
+<form action="/input_generate" method="post">
+        
+        <label for="title">Title of Report:</label><br>
+       <textarea id="title" name="title" placeholder="Enter the title" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="about_problem">About Problem:</label><br>
+        <textarea id="about_problem" name="about_problem" placeholder="Describe the problem" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="methods_used">Methods Used:</label><br>
+        <textarea id="methods_used" name="methods_used" placeholder="List the methods used" rows="3" cols="50" required></textarea><br><br>
+
+        <label for="proposed_workflow">Proposed Workflow:</label><br>
+        <textarea id="proposed_workflow" name="proposed_workflow" placeholder="Explain your proposed workflow" rows="3" cols="50" required></textarea><br><br>
+
+        <label for="results">Results (if any):</label><br>
+        <textarea id="results" name="results" placeholder="Write your results or leave blank" rows="3" cols="50"></textarea><br><br>
+
+        <button type="submit">Generate Report</button>
+      </form>
+{% endblock %}

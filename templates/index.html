@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  <form action="/generate_report" method="post">
+    <h4>Do you have any input for generation of report?</h4>
+
+    <label>
+      <input type="radio" name="user_input" value="Yes" onchange="this.form.submit()"> Yes
+    </label><br>
+
+    <label>
+      <input type="radio" name="user_input" value="No" onchange="this.form.submit()"> No
+    </label><br>
+  </form>
+{% endblock %}

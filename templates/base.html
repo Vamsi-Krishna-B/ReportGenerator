@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', path='css/bootstrap.min.css') }}">
+  <title>Report Generator📰</title>
+</head>
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Report Generator 📰</a>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container my-5">
+    <!-- Header Section -->
+    <div class="text-center mb-5">
+      <h1 class="display-5 fw-bold text-primary">Report Generator</h1>
+      <p class="lead text-muted">
+        This is a report generator app built using <strong>LangGraph</strong> and <strong>Flask</strong>.
+      </p>
+    </div>
+
+    <!-- Content Block (Flask/Jinja Placeholder) -->
+    <div class="card shadow-lg border-0">
+      <div class="card-body p-4">
+        {% block content %}
+        <!-- Page-specific content goes here -->
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white text-center py-3 mt-5">
+    <p class="mb-0">&copy; {{ current_year if current_year else "2025" }} Report Generator | All rights reserved.</p>
+  </footer>
+
+<script src="{{ url_for('static', path='js/bootstrap.bundle.min.js') }}"></script>
+</html>

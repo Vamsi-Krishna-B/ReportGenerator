@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+  <form action="/auto_generate" method="post">
+        
+        <label for="topic">Enter the topic:</label><br>
+       <textarea id="topic" name="topic" placeholder="Enter the topic" rows="4" cols="50" required></textarea><br><br>
+        <button type="submit">Generate Report</button>
+      </form>
+{% endblock %}
