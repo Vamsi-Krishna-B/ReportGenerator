@@ -4,8 +4,6 @@ from IPython.display import display, Image
 
 class ReportGeneratorAPP:
     def __init__(self):
-        os.environ["GROQ_API_KEY"] = ""
-        os.environ["TAVILY_API_KEY"] = ""
         self.graph = Build_Graph().compile()
         self.final_report = '' 
     
