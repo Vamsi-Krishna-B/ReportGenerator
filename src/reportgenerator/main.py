@@ -1,16 +1,11 @@
 import os
 from src.reportgenerator.graphs.graph_builder import Build_Graph
 from IPython.display import display, Image
-import pypandoc
 
 class ReportGeneratorAPP:
     def __init__(self):
-        os.environ["GROQ_API_KEY"] = (
-            "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"
-        )
-        os.environ['TAVILY_API_KEY'] = (
-            "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"
-        )
+        os.environ["GROQ_API_KEY"] = ""
+        os.environ["TAVILY_API_KEY"] = ""
         self.graph = Build_Graph().compile()
         self.final_report = '' 
     
