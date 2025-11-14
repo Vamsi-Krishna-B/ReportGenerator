@@ -3,10 +3,14 @@ from src.reportgenerator.graphs.graph_builder import Build_Graph
 from IPython.display import display, Image
 
 class ReportGeneratorAPP:
+    
     def __init__(self):
-        
         self.graph = Build_Graph().compile()
         self.final_report = '' 
+        
+    def set_api_keys(self,groq_api_key,tavily_api_key):
+        os.environ['GROQ_API_KEY'] = groq_api_key
+        os.environ['TAVILY_API_KEY'] = tavily_api_key
 
     def save_as_md(self,file_path):
         with open(file_path, "w", encoding="utf-8") as f:

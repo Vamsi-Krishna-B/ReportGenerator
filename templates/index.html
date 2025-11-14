@@ -1,14 +1,66 @@
 {% extends "base.html" %}
 {% block content %}
-  <form action="/generate_report" method="post">
-    <h4>Do you have any input for generation of report?</h4>
+<form id="fullForm" method="POST" action="/generate_report">
+  
+  <h4 class="mb-4 text-primary">Enter Your API Keys</h4>
 
-    <label>
-      <input type="radio" name="user_input" value="Yes" onchange="this.form.submit()"> Yes
-    </label><br>
+  <!-- Groq API Key -->
+  <div class="mb-3">
+    <label for="groq_key" class="form-label fw-semibold">Groq API Key</label>
+    <input 
+      type="password" 
+      class="form-control" 
+      id="groq_key" 
+      name="groq_key" 
+      placeholder="Enter your Groq API key" 
+      required>
+  </div>
 
-    <label>
-      <input type="radio" name="user_input" value="No" onchange="this.form.submit()"> No
-    </label><br>
-  </form>
+  <!-- Tavily API Key -->
+  <div class="mb-3">
+    <label for="tavily_key" class="form-label fw-semibold">Tavily API Key</label>
+    <input 
+      type="password" 
+      class="form-control" 
+      id="tavily_key" 
+      name="tavily_key" 
+      placeholder="Enter your Tavily API key" 
+      required>
+  </div>
+
+  <!-- Warning Message -->
+  <div id="warningMsg" class="alert alert-danger d-none">
+    ⚠️ You must enter both API keys and select Yes/No before proceeding.
+  </div>
+
+  <!-- Report Input Question -->
+  <h4 class="mt-4">Do you have any input for generation of report?</h4>
+
+  <label>
+    <input type="radio" name="user_input" value="Yes"> Yes
+  </label><br>
+
+  <label>
+    <input type="radio" name="user_input" value="No"> No
+  </label><br><br>
+
+  <button type="submit" class="btn btn-primary w-100 fw-bold">
+    Continue
+  </button>
+</form>
+
+<!-- Client-side validation -->
+<script>
+document.getElementById("fullForm").addEventListener("submit", function(e) {
+  const groq = document.getElementById("groq_key").value.trim();
+  const tavily = document.getElementById("tavily_key").value.trim();
+  const userInput = document.querySelector("input[name='user_input']:checked");
+
+  if (!groq || !tavily || !userInput) {
+    e.preventDefault(); // stop form submission
+    document.getElementById("warningMsg").classList.remove("d-none");
+  } 
+});
+</script>
+
 {% endblock %}

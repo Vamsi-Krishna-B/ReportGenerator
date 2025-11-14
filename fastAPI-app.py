@@ -21,7 +21,13 @@ async def index(request:Request):
     )
 
 @app.post("/generate_report")
-async def generate_report(user_input: str = Form(...)):
+async def generate_report(
+    groq_key: str = Form(...),
+    tavily_key: str = Form(...),
+    user_input: str = Form(...)
+):
+    
+    report_app.set_api_keys(groq_key, tavily_key)
     if user_input == "Yes":
         return RedirectResponse(url="/input_page", status_code=303)
     else:
