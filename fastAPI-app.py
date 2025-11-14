@@ -1,4 +1,6 @@
+from urllib import request
 import uvicorn
+import markdown
 import warnings
 from fastapi.templating import Jinja2Templates
 from fastapi import FastAPI, Request,Form
@@ -6,10 +8,15 @@ from fastapi.responses import HTMLResponse
 from fastapi.responses import RedirectResponse
 from src.reportgenerator.main import ReportGeneratorAPP
 from fastapi.staticfiles import StaticFiles
+from starlette.middleware.sessions import SessionMiddleware
+final_report_generated = ""
 report_app = ReportGeneratorAPP()
 warnings.filterwarnings("ignore", category=UserWarning, module='wikipedia')
-
 app = FastAPI()
+app.add_middleware(
+    SessionMiddleware,
+    secret_key="your-very-secret-session-key"
+)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
@@ -26,7 +33,6 @@ async def generate_report(
     tavily_key: str = Form(...),
     user_input: str = Form(...)
 ):
-    
     report_app.set_api_keys(groq_key, tavily_key)
     if user_input == "Yes":
         return RedirectResponse(url="/input_page", status_code=303)
@@ -51,7 +57,7 @@ async def input_generate(
     about_problem: str = Form(...),
     methods_used: str = Form(...),
     proposed_workflow: str = Form(...),
-    results: str = Form(...)
+    results: str = Form(...),
 ):
     user_input = {
         "title": title,
@@ -62,15 +68,35 @@ async def input_generate(
     }
 
     # Call your report generation function
+
+    global final_report_generated 
     result = report_app.generate_report(isUserInput=True, user_input=user_input)
-    return result
+    final_report_generated = result
+    return RedirectResponse(url="/result", status_code=303)
 
 
 @app.post("/auto_generate")
 async def auto_generate(topic: str = Form(...)):
+    global final_report_generated 
     result = report_app.generate_report(isUserInput=False, topic=topic)
-    return result
+    final_report_generated = result
+    return RedirectResponse(url="/result", status_code=303)
 
+# ---------- GET ROUTES ----------
+
+
+@app.get("/result")
+def display_result(request: Request):
+    # print(final_report_generated)
+    result_html = markdown.markdown(final_report_generated) if final_report_generated else None
+    # print(result_html)
+    return templates.TemplateResponse(
+        "result.html",
+        {
+            "request": request,
+            "result":result_html
+        }
+    )
 
 # ---------- REDIRECT LOGIC ----------
 
@@ -80,6 +106,7 @@ async def generate_report(user_input: str = Form(...)):
         return RedirectResponse(url="/input_page", status_code=303)
     else:
         return RedirectResponse(url="/auto_generate_page", status_code=303)
+
 
 
 if __name__ == "__main__":

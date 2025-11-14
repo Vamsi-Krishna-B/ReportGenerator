@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="mb-4 text-primary">Generated Report</h3>
+
+{% if result %}
+  <div class="card shadow-sm border-0">
+    <div class="card-body">
+      {{ result | safe }}
+    </div>
+  </div>
+{% else %}
+  <p>No report available.</p>
+{% endif %}
+
+{% endblock %}
