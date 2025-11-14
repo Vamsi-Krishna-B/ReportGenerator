@@ -4,6 +4,7 @@ from IPython.display import display, Image
 
 class ReportGeneratorAPP:
     def __init__(self):
+        
         self.graph = Build_Graph().compile()
         self.final_report = '' 
     
