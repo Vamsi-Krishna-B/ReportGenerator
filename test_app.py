@@ -2,7 +2,7 @@
 import pytest
 
 # Import the function you want to test
-from src.reportgenerator.main import ReportGeneratorAPP
+from src.reportgeneratorapp.main import ReportGeneratorAPP
 
 
 def test_load_langgraph_agenticai_app_runs():
