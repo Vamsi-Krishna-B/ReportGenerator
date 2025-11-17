@@ -34,3 +34,5 @@ dependencies = [
     "watchdog>=6.0.0",
     "wikipedia>=1.4.0",
 ]
+[tool.pytest.ini_options]
+pythonpath = ["src"]
