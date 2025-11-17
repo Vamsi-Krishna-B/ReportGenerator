@@ -1,6 +1,5 @@
 import os
 from src.reportgenerator.graphs.graph_builder import Build_Graph
-from IPython.display import display, Image
 
 class ReportGeneratorAPP:
     
@@ -15,9 +14,6 @@ class ReportGeneratorAPP:
     def save_as_md(self,file_path):
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(self.final_report)
-
-    def ShowGraph(self):
-        display(Image(self.graph.get_graph().draw_mermaid_png()))
 
     def generate_report(self, isUserInput, user_input=None,topic=None):
         if isUserInput:
