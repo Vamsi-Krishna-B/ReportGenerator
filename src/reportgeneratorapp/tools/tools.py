@@ -1,6 +1,6 @@
 from langchain_community.tools import ArxivQueryRun,WikipediaQueryRun
 from langchain_community.utilities import WikipediaAPIWrapper,ArxivAPIWrapper
-from src.reportgenerator.llms.GroqLLM import get_llm
+from src.reportgeneratorapp.llms.GroqLLM import get_llm
 from langchain_core.messages import HumanMessage,SystemMessage 
 from tavily import TavilyClient
 

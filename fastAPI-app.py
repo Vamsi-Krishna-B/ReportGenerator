@@ -5,7 +5,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi import FastAPI, Request,Form
 from fastapi.responses import HTMLResponse
 from fastapi.responses import RedirectResponse
-from src.reportgenerator.main import ReportGeneratorAPP
+from src.reportgeneratorapp.main import ReportGeneratorAPP
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
 final_report_generated = ""

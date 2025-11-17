@@ -1,4 +1,4 @@
-from src.reportgenerator.states.states import State
+from src.reportgeneratorapp.states.states import State
 
 
 def final_report(state:State):

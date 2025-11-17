@@ -1,6 +1,6 @@
-from src.reportgenerator.states.states import State
+from src.reportgeneratorapp.states.states import State
 from langchain_core.messages import SystemMessage,HumanMessage
-from src.reportgenerator.llms.GroqLLM import get_llm
+from src.reportgeneratorapp.llms.GroqLLM import get_llm
 
 def llm_call(state:State):
     """Worker writes a section of the report"""

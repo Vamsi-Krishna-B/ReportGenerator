@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from src.reportgenerator.main import ReportGeneratorAPP
+from src.reportgeneratorapp.main import ReportGeneratorAPP
 import warnings
 
 warnings.filterwarnings("ignore", category=UserWarning, module='wikipedia')

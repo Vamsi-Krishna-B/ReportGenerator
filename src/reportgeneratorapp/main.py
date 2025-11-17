@@ -1,5 +1,5 @@
 import os
-from src.reportgenerator.graphs.graph_builder import Build_Graph
+from src.reportgeneratorapp.graphs.graph_builder import Build_Graph
 
 class ReportGeneratorAPP:
     

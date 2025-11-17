@@ -1,6 +1,6 @@
-from src.reportgenerator.states.states import State
+from src.reportgeneratorapp.states.states import State
 from langchain_core.messages import SystemMessage
-from src.reportgenerator.llms.GroqLLM import get_llm
+from src.reportgeneratorapp.llms.GroqLLM import get_llm
 
 def generate_abstract(state:State):
     """

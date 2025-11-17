@@ -1,4 +1,4 @@
-from src.reportgenerator.states.states import State
+from src.reportgeneratorapp.states.states import State
 
 def synthesizer(state:State):
     """Synthesize full report from sections"""

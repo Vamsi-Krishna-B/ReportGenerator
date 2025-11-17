@@ -1,6 +1,6 @@
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning, module='wikipedia')
-from src.reportgenerator.main import ReportGeneratorAPP
+from src.reportgeneratorapp.main import ReportGeneratorAPP
 from IPython.display import Markdown,display
 
 report_app = ReportGeneratorAPP()

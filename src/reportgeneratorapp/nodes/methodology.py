@@ -1,5 +1,5 @@
-from src.reportgenerator.states.states import State
-from src.reportgenerator.tools.tools import WikiSearchContent
+from src.reportgeneratorapp.states.states import State
+from src.reportgeneratorapp.tools.tools import WikiSearchContent
 
 def generate_methodology(state:State):
     """

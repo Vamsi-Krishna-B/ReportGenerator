@@ -1,18 +1,18 @@
 from langgraph.graph import StateGraph,START,END 
-from src.reportgenerator.states.states import State
-from src.reportgenerator.nodes.route_node import route
-from src.reportgenerator.nodes.abstract import generate_abstract
-from src.reportgenerator.nodes.intro import generate_introduction
-from src.reportgenerator.nodes.methodology import generate_methodology
-from src.reportgenerator.nodes.proposed_method import generate_proposed_method
-from src.reportgenerator.nodes.results import generate_results
-from src.reportgenerator.nodes.references import generate_references
-from src.reportgenerator.nodes.conclusion import generate_conclusion
-from src.reportgenerator.nodes.final_report import final_report
-from src.reportgenerator.nodes.orchestrator import orcehstrator
-from src.reportgenerator.nodes.assign_workers import assign_workers
-from src.reportgenerator.nodes.llm_call_parallel import llm_call
-from src.reportgenerator.nodes.synthesizer import synthesizer
+from src.reportgeneratorapp.states.states import State
+from src.reportgeneratorapp.nodes.route_node import route
+from src.reportgeneratorapp.nodes.abstract import generate_abstract
+from src.reportgeneratorapp.nodes.intro import generate_introduction
+from src.reportgeneratorapp.nodes.methodology import generate_methodology
+from src.reportgeneratorapp.nodes.proposed_method import generate_proposed_method
+from src.reportgeneratorapp.nodes.results import generate_results
+from src.reportgeneratorapp.nodes.references import generate_references
+from src.reportgeneratorapp.nodes.conclusion import generate_conclusion
+from src.reportgeneratorapp.nodes.final_report import final_report
+from src.reportgeneratorapp.nodes.orchestrator import orcehstrator
+from src.reportgeneratorapp.nodes.assign_workers import assign_workers
+from src.reportgeneratorapp.nodes.llm_call_parallel import llm_call
+from src.reportgeneratorapp.nodes.synthesizer import synthesizer
 
 
 
