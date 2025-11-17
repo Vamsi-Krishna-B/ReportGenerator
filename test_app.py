@@ -1,13 +1,11 @@
 # test_app.py
 import pytest
-
 # Import the function you want to test
 from src.reportgeneratorapp.main import ReportGeneratorAPP
 
-
-def test_load_langgraph_agenticai_app_runs():
+def test_reportgenerator_app_runs():
     """
-    Test if the LangGraph Agentic AI app loads without raising an exception.
+    Test if the Report Generator app loads without raising an exception.
     """
     try:
         app = ReportGeneratorAPP()
