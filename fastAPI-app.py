@@ -83,7 +83,6 @@ async def auto_generate(topic: str = Form(...)):
 @app.get("/result")
 def display_result(request: Request):
     global final_report_generated
-    # print(final_report_generated)
     result_html = markdown2.markdown(final_report_generated,extras=["tables","fenced-code-blocks","latex"]) if final_report_generated else None
     return templates.TemplateResponse(
         "result.html",
@@ -92,16 +91,6 @@ def display_result(request: Request):
             "result":result_html
         }
     )
-
-
-
-@app.post("/generate_report")
-async def generate_report(user_input: str = Form(...)):
-    if user_input == "Yes":
-        return RedirectResponse(url="/input_page", status_code=303)
-    else:
-        return RedirectResponse(url="/auto_generate_page", status_code=303)
-
 
 
 if __name__ == "__main__":

@@ -18,7 +18,7 @@ from src.reportgeneratorapp.nodes.synthesizer import synthesizer
 
 def Build_Graph():
     builder = StateGraph(State)
-# builder.add_node("router",route)
+    builder.add_node("router",route)
     builder.add_node("abstract",generate_abstract)
     builder.add_node("introduction",generate_introduction)
     builder.add_node("methodology",generate_methodology)
